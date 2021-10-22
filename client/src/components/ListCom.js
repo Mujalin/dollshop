@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react'
 export default function ListCom() {
     const [pro_name, setpro_name] = useState(["ตุ๊กตา"])
     const [productList, setproductList] = useState([])
-    let locat="./produce/"
+    
+    
     const loadList = async () => {
         try {
 
@@ -37,24 +38,24 @@ export default function ListCom() {
                 }}
             />
             {productList.map((products) => {
-                const pro_img="./product/"+products.pro_img
-                locat+=products.pro_id
+                
+                let locat = "./produce/"+products.pro_id
                 return (
 
-                    
-                        <div class="at">
-                            <div className="card">
-                                <a href={locat}>
-                                    <img className="card-img-top" src={pro_img} />
-                                </a>
-                                <div className="card-body">
-                                    <h5 className="card-title">{products.pro_name}</h5>
-                                    <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
-                                </div>
-                            </div>
 
+                    <div class="at">
+                        <div className="card">
+                            <a href={locat}>
+                                <img className="card-img-top" src={products.pro_img} />
+                            </a>
+                            <div className="card-body">
+                                <h5 className="card-title">{products.pro_name}</h5>
+                                <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
+                            </div>
                         </div>
-                    
+
+                    </div>
+
                 )
             })}
         </div>

@@ -35,6 +35,22 @@ app.get("/getProduct/:name", async(req, res) => {
     }
   });
 
+  app.get("/getProductById/:pro_id", async(req, res) => {
+    try {
+      let name = req.params.name;
+      let id = req.params.pro_id;
+      
+      const sql = `SELECT * from product where pro_id="${id}"  `;
+      
+      pool.query(sql, (err, results) => {
+  
+        console.log(results);
+        res.send(results);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
 
 
   app.get("/getCustomer", async(req, res) => {
