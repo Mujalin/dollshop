@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const port =5000;
+const port =4000;
 const pool=require('./connect')
 const cors = require('cors');
 const { json } = require('express');
@@ -16,15 +16,14 @@ app.use(express.json());
 app.listen(port,()=>{
     console.log(`server has started ${port}`);
 })
-
-
 //routes
 //get
-app.get("/getProduct", async(req, res) => {
+app.get("/getProduct/:name", async(req, res) => {
     try {
+      let name = req.params.name;
       let id = req.params.id;
-  
-      const sql = `SELECT * from product  `;
+      
+      const sql = `SELECT * from product where pro_name like "%${name}%"  `;
       
       pool.query(sql, (err, results) => {
   
@@ -35,6 +34,8 @@ app.get("/getProduct", async(req, res) => {
       console.error(err.message);
     }
   });
+
+
 
   app.get("/getCustomer", async(req, res) => {
     try {
