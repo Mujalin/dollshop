@@ -69,6 +69,22 @@ app.get("/getProduct/:name", async(req, res) => {
     }
   });
 
+  app.get("/getcart", async(req, res) => {
+    try {
+      // let {id} = req.params;
+  
+      const sql = "SELECT * from cart,product where product.pro_id=cart.pro_id and cus_id='cus1' ";
+      
+      pool.query(sql, (err, results) => {
+  
+        console.log(results);
+        res.send(results);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
+
 //post  
 app.post('/insert',async(req,res)=>{
     try {
@@ -114,6 +130,21 @@ app.delete('/delete/:id',async (req,res)=>{
 })
 
 
+app.post("/insertCart", async(req, res) => {
+  try {
+    
+    const {pro_id,amount}=req.body
 
+    const sql = `INSERT INTO cart (cus_id,pro_id,amount) values('cus1','${pro_id}',${amount}) `;
+    
+    pool.query(sql, (err, results) => {
+      console.log(sql)
+      console.log(results);
+      res.send(results);
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 

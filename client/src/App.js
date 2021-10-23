@@ -10,7 +10,7 @@ import Testimonials from "./components/Testimonials";
 // import './qq.css';
 import Produce from "./components/produce";
 import ListCom from "./components/ListCom";
-
+import Cart from "./components/Cart";
 
 
 export default function App() {
@@ -34,6 +34,9 @@ export default function App() {
           </Route>
           <Route exact path="/produce/:pro_id">
             <Produce />
+          </Route>
+          <Route exact path="/Cart">
+            <Cart />
           </Route>
         </Switch>
       </Router>
