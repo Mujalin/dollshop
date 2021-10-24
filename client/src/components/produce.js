@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from "react-router";
 
-
-
-
     export default function Produce() {
         
     const [productList, setproductList] = useState([])
     const [amount,setamount] = useState(1)
     let location = useLocation();
     let pro_id = location.pathname.split("/")[2];
-    const doinsert =(e)=>{
+
+
+    const insertCart =(e)=>{
         e.preventDefault();
     try {
         
@@ -20,11 +19,13 @@ import { useLocation } from "react-router";
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bodyData),
       });
+      
       window.location = `/produce/${pro_id}`;
     } catch (err) {
       console.error(err.message);
     }
     }
+    
 
     const loadList = async () => {
         try {
@@ -53,7 +54,7 @@ import { useLocation } from "react-router";
 
                 
         <div className="box">
-            <form name="myForm" onSubmit={doinsert} >
+            <form name="myForm" onSubmit={insertCart} >
             <img className="" src={products.pro_img} />
             <div className="text">
                 <h2>{products.pro_name} {products.pro_size} นิ้ว</h2>

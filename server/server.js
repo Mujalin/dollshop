@@ -86,18 +86,25 @@ app.get("/getProduct/:name", async(req, res) => {
   });
 
 //post  
-app.post('/insert',async(req,res)=>{
-    try {
-        const {name,price}=req.body
-        let data= await pool.query(
-            "insert into fruits (name,price) values ($1,$2) ",[name,price]
-        )
-        console.log(name,price)
-        res.json("insert conpelete....")
-    } catch (err) {
-        console.error(err.massage)
-    }
-})
+app.post("/insertCart", async(req, res) => {
+  try {
+    
+    const {pro_id,amount}=req.body
+
+    const sql = `INSERT INTO cart (cus_id,pro_id,amount) values('cus1','${pro_id}',${amount});INSERT INTO sale_detail (sale_id,cus_id,pro_id,sale_amount) values('sale01','cus1','${pro_id}',${amount}); `;
+    
+    pool.query(sql, (err, results) => {
+      console.log(sql)
+      console.log(results);
+      res.send(results);
+      
+    });
+    
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 
 //put 
@@ -115,36 +122,29 @@ app.put('/update/:id',async(req,res)=>{
 })
 
 
+
+
 //delete
-app.delete('/delete/:id',async (req,res)=>{
-    try {
-        let {id}=req.params
-        let data=await pool.query(
-            "delete from fruits where id= $1",[id]
-        )
-        console.log(id)
-        res.json("delete compelete....") 
-    } catch (err) {
-        console.error(err.massage)
-    }
-})
-
-
-app.post("/insertCart", async(req, res) => {
+app.post("/deleteCart", async(req, res) => {
   try {
     
-    const {pro_id,amount}=req.body
+    const {pro_id}=req.body
 
-    const sql = `INSERT INTO cart (cus_id,pro_id,amount) values('cus1','${pro_id}',${amount}) `;
+    const sql = `delete from cart where cus_id='cus1';delete from sale_detail where cus_id='cus1'`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
       console.log(results);
       res.send(results);
+      
     });
+    
   } catch (err) {
     console.error(err.message);
   }
 });
+
+
+
 
 

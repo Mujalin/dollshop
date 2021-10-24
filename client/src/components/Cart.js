@@ -1,10 +1,26 @@
 import React,{ useState, useEffect } from 'react'
 
 
+
 export default function cart() {
     const [pro_name, setpro_name] = useState([])
     const [productList, setproductList] = useState([])
-    
+    const deleteCart =(e)=>{
+        e.preventDefault();
+    try {
+        
+      
+      const resp = fetch("http://localhost:4000/deleteCart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        
+      });
+      
+      window.location = "/cart";
+    } catch (err) {
+      console.error(err.message);
+    }
+    }
     
     const loadList = async () => {
         try {
@@ -31,7 +47,7 @@ export default function cart() {
                 
                 return (
 
-
+                    <form onSubmit={deleteCart}>
                     <div class="at">
                         <div className="card">
                             
@@ -43,9 +59,9 @@ export default function cart() {
                                 <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
                             </div>
                         </div>
-
+                        <button className="glow-hover" type="submit" >Delete</button>
                     </div>
-
+                    </form>
                 )
             })}
         </div>
