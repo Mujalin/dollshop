@@ -46,7 +46,7 @@ export default function ListCom() {
                     <div class="at">
                         <div className="card">
                             <a href={locat}>
-                                <img className="card-img-top" src={products.pro_img} />
+                                <img className="card-img-top"  src={products.pro_img} />
                             </a>
                             <div className="card-body">
                                 <h5 className="card-title">{products.pro_name}</h5>
