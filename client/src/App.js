@@ -11,6 +11,7 @@ import Testimonials from "./components/Testimonials";
 import Produce from "./components/produce";
 import ListCom from "./components/ListCom";
 import Cart from "./components/Cart";
+import Mesproduct from "./components/Mesproduct";
 
 
 export default function App() {
@@ -37,6 +38,9 @@ export default function App() {
           </Route>
           <Route exact path="/Cart">
             <Cart />
+          </Route>
+          <Route exact path="/MesPro">
+            <Mesproduct />
           </Route>
         </Switch>
       </Router>
