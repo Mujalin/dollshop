@@ -11,6 +11,7 @@ import Testimonials from "./components/Testimonials";
 import Produce from "./components/produce";
 import ListCom from "./components/ListCom";
 import Cart from "./components/Cart";
+import Mesproduct from "./components/Mesproduct";
 import Register from "./components/Register";
 import './q.css';
 import Location from "./components/Location";
@@ -43,6 +44,9 @@ export default function App() {
           <Route exact path="/Cart">
             <Cart />
           </Route>
+          <Route exact path="/MesPro">
+            <Mesproduct />
+            </Route>
           <Route exact path="/Register">
             <Register />
           </Route>
