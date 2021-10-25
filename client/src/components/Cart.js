@@ -7,14 +7,16 @@ export default function cart() {
     const [productList, setproductList] = useState([])
     let location = useLocation();
     let pro_id = location.pathname.split("/")[2];
+    const total=(e)=>{
 
+    }
     const deleteCart =(e)=>{
         e.preventDefault();
     try {
         
       const bodyData = { pro_id};
       const resp = fetch("http://localhost:4000/deleteCart", {
-        method: "post",
+        method: "delete",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bodyData),
       });
@@ -30,6 +32,7 @@ export default function cart() {
 
             const resp = await fetch(`http://localhost:4000/getcart`)
             const jsondata = await resp.json()
+            console.log(jsondata)
             setproductList(jsondata)
             console.log(productList)
 
@@ -44,12 +47,12 @@ export default function cart() {
     }, [])
     return (
         <div>
- 
+ <a href="/location"><button className="glow-hover" type="submit" >ดำเนินการสั่งซื้อ</button></a>
             {productList.map((products) => {
                 
                 
                 return (
-
+                    <div>
                     <form onSubmit={deleteCart}>
                     <div class="at">
                         <div className="card">
@@ -60,14 +63,32 @@ export default function cart() {
                                 <h5 className="card-title">{products.pro_name}</h5>
                                 <p>จำนวน {products.amount}</p>
                                 <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
+                                
                             </div>
                         </div>
                         <button className="glow-hover" type="submit" >Delete</button>
                     </div>
                     </form>
+                    
+                    </div>
                 )
             })}
-            
+            <p id="demo">ราคารวม {total()
+            // ()=>{
+            //     var total=0
+            //     for(let i=0;i<productList.length;i++){
+            //         total += productList[i].pro_price*productList[i].amount
+                    
+            //     }
+
+            //     return (<p>{total}</p>)
+            // }
+       
+                }
+                
+
+
+           </p>
         </div>
        
     )
