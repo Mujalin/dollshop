@@ -1,24 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function location() {
+    const [cargo_re_name,setcargo_re_name]=useState([])
+    const [loc_desc1,setloc_desc1]=useState([])
+    const [loc_desc2,setloc_desc2]=useState([])
+    const [loc_desc3,setloc_desc3]=useState([])
+    const [loc_desc4,setloc_desc4]=useState([])
+    const [loc_desc5,setloc_desc5]=useState([])
+    const [cargo_re_phone,setcargo_re_phone]=useState([])
+    const insertloc =(e)=>{
+        e.preventDefault();
+    try {
+        
+      const bodyData = { cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone};
+      const resp = fetch("http://localhost:4000/insertloc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bodyData),
+      });
+      
+      window.location = `/product`;
+    } catch (err) {
+      console.error(err.message);
+    }
+    }
+
     return (
         <div>
-            <form method="post" action="location_up.php?cus_id=<?PHP echo $cus_id ?>">
+            <form onSubmit={insertloc} >
       <div className="boot">
         <label>ชื่อผู้รับสินค้า </label>
-        <input className="sec" type="text" name="cargo_re_name" defaultValue required placeholder="ชื่อผู้รับ" />
+        <input className="sec" type="text" onChange={(x=>{ setcargo_re_name(x.target.value)})}  required placeholder="ชื่อผู้รับ" />
         <br /><br />
         <label> ที่อยู่ผู้รับสินค้า </label>        
-        <input className="sec" type="text" name="loc_desc1" size={20} defaultValue required placeholder="บ้านเลขที่/หมู่" />
+        <input className="sec" type="text" onChange={(x=>{ setloc_desc1(x.target.value)})} size={20}  required placeholder="บ้านเลขที่/หมู่" />
         <br /><br />
         <label> ตำบล/แขวง </label>
-        <input className="sec" type="text" name="loc_desc2" size={20} required placeholder="ตำบล/แขวง" />
+        <input className="sec" type="text" onChange={(x=>{ setloc_desc2(x.target.value)})} size={20} required placeholder="ตำบล/แขวง" />
         <br /><br />
         <label> อำเภอ/เขต </label>
-        <input className="sec" type="text" name="loc_desc3" size={20} required placeholder="อำเภอ/เขต" />
+        <input className="sec" type="text" onChange={(x=>{ setloc_desc3(x.target.value)})} size={20} required placeholder="อำเภอ/เขต" />
         <br /><br />
         <label> จังหวัด </label>
-        <select className="sec" name="loc_desc4">
+        <select className="sec" onChange={(x=>{ setloc_desc4(x.target.value)})}>
           <option value selected>กรุณาเลือกจังหวัด </option>
           <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
           <option value="กระบี่">กระบี่ </option>
@@ -101,10 +125,10 @@ export default function location() {
         </select>
         <br /><br />
         <label> รหัสไปรษณีย์ </label>
-        <input className="sec" type="text" name="loc_desc5" size={20} defaultValue required placeholder="รหัสไปรษณีย์ 5 หลัก" minLength={5} maxLength={5} />
+        <input className="sec" type="text" onChange={(x=>{ setloc_desc5(x.target.value)})} size={20} required placeholder="รหัสไปรษณีย์ 5 หลัก" minLength={5} maxLength={5} />
         <br /><br />
         <label> เบอร์โทรศัพท์ </label>
-        <input className="sec" type="text" name="cargo_re_phone" size={20} required minLength={10} maxLength={10} placeholder="หมายเลขโทรศัพท์" />
+        <input className="sec" type="text" onChange={(x=>{ setcargo_re_phone(x.target.value)})} size={20} required minLength={10} maxLength={10} placeholder="หมายเลขโทรศัพท์" />
         <br /><br />
         <button className="glow-hover" type="submit" name="btnsummit"> บันทึก </button>
         <button className="glow-hover" type="reset" name="clear"> ล้าง </button> 

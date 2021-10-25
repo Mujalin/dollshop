@@ -73,7 +73,22 @@ app.get("/getProduct/:name", async(req, res) => {
     try {
       // let {id} = req.params;
   
-      const sql = "SELECT * from cart,product where product.pro_id=cart.pro_id and cus_id='cus1' ";
+      const sql = "SELECT * FROM cart,product WHERE product.pro_id=cart.pro_id and cus_id='cus1' ; ";
+      
+      pool.query(sql, (err, results) => {
+  
+        console.log(results);
+        res.send(results);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
+  app.get("/getcart1", async(req, res) => {
+    try {
+      // let {id} = req.params;
+  
+      const sql = "SELECT sum(product.pro_price*cart.amount)total FROM cart,product WHERE product.pro_id=cart.pro_id and cus_id='cus1' ; ";
       
       pool.query(sql, (err, results) => {
   
@@ -92,6 +107,25 @@ app.post("/insertCart", async(req, res) => {
     const {pro_id,amount}=req.body
 
     const sql = `INSERT INTO cart (cus_id,pro_id,amount) values('cus1','${pro_id}',${amount});INSERT INTO sale_detail (sale_id,cus_id,pro_id,sale_amount) values('sale01','cus1','${pro_id}',${amount}); `;
+    
+    pool.query(sql, (err, results) => {
+      console.log(sql)
+      console.log(results);
+      res.send(results);
+      
+    });
+    
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.post("/insertloc", async(req, res) => {
+  try {
+    
+    const {cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone}=req.body
+    const loc_desc=loc_desc1+' '+loc_desc2+' '+loc_desc3+' '+loc_desc4+' '+loc_desc5
+    const sql = `insert into location values('cus10','${loc_desc}','loc10'); insert into cargo values ('cargo0','sale0','0','2020-20-20','loc10','${cargo_re_name}','${cargo_re_phone}','กำลัง');`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)

@@ -13,6 +13,7 @@ import ListCom from "./components/ListCom";
 import Cart from "./components/Cart";
 import Register from "./components/Register";
 import './q.css';
+import Location from "./components/Location";
 
 
 
@@ -20,15 +21,16 @@ import './q.css';
 export default function App() {
   return (
     <main className="text-gray-400 bg-gray-900 body-font">
-      <Navbar />
+      
       
       <Router>
+      <Navbar/>
         <Switch>
           <Route exact path="/">
             
-            <About />
-            <Projects />
-            <Skills />
+            <About/>
+            <Projects/>
+            <Skills/>
             <Testimonials />
             <Contact />
           </Route>
@@ -44,8 +46,12 @@ export default function App() {
           <Route exact path="/Register">
             <Register />
           </Route>
+          <Route exact path="/Location">
+            <Location />
+          </Route>
         </Switch>
       </Router>
+      
     </main>
   );
 }
