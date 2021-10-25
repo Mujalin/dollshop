@@ -1,19 +1,22 @@
 import React,{ useState, useEffect } from 'react'
-
+import { useLocation } from "react-router";
 
 
 export default function cart() {
-    const [pro_name, setpro_name] = useState([])
+   
     const [productList, setproductList] = useState([])
+    let location = useLocation();
+    let pro_id = location.pathname.split("/")[2];
+
     const deleteCart =(e)=>{
         e.preventDefault();
     try {
         
-      
+      const bodyData = { pro_id};
       const resp = fetch("http://localhost:4000/deleteCart", {
-        method: "POST",
+        method: "post",
         headers: { "Content-Type": "application/json" },
-        
+        body: JSON.stringify(bodyData),
       });
       
       window.location = "/cart";
@@ -64,6 +67,7 @@ export default function cart() {
                     </form>
                 )
             })}
+            
         </div>
        
     )

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
-import Product from "./components/ListCom";
+
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials from "./components/Testimonials";
@@ -12,6 +12,10 @@ import Produce from "./components/produce";
 import ListCom from "./components/ListCom";
 import Cart from "./components/Cart";
 import Mesproduct from "./components/Mesproduct";
+import Register from "./components/Register";
+import './q.css';
+
+
 
 
 export default function App() {
@@ -19,7 +23,6 @@ export default function App() {
     <main className="text-gray-400 bg-gray-900 body-font">
       <Navbar />
       
-
       <Router>
         <Switch>
           <Route exact path="/">
@@ -41,6 +44,9 @@ export default function App() {
           </Route>
           <Route exact path="/MesPro">
             <Mesproduct />
+            </Route>
+          <Route exact path="/Register">
+            <Register />
           </Route>
         </Switch>
       </Router>

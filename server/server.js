@@ -122,12 +122,12 @@ app.put('/update/:id',async(req,res)=>{
 
 
 //delete
-app.post("/deleteCart", async(req, res) => {
+app.delete("/deleteCart", async(req, res) => {
   try {
     
     const {pro_id}=req.body
 
-    const sql = `delete from cart where cus_id='cus1';delete from sale_detail where cus_id='cus1'`;
+    const sql = `delete from cart where cus_id='cus1'and pro_id='${pro_id}';delete from sale_detail where cus_id='cus1' and pro_id='${pro_id}`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
