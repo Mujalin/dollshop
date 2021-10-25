@@ -7,9 +7,6 @@ export default function Mesproduct() {
 
   const loadList = async () => {
     try {
-      const resp = await fetch(
-        `http://localhost:5000/getWarehouseView/${prod_id}`
-      );
       const jsonData = await resp.json();
 
       setProdList(jsonData);
