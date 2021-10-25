@@ -3,14 +3,14 @@ import '../css/MesPro.css'
 import EditProduct from './EditProduct'
 
 export default function Mesproduct() {
-  const [Pro_id,setId] = useState([])
-  const [pro_name,setName] = useState([])
+  const [pro_id,setId] = useState([])
+  const [pro_name,setName] = useState("ตุ๊กตา")
   const [pro_list,setlist] = useState([])
 
    const loadList = async()=>{
       try{
 
-          const resp = await fetch("http://localhost:4000/getProduct/:name");
+          const resp = await fetch(`http://localhost:4000/getProduct/${pro_name}`);
           const jsonData = await resp.json() 
           setlist(jsonData)
           
@@ -23,7 +23,7 @@ export default function Mesproduct() {
   useEffect(()=>{
       console.log("Enter useEffect()")
       loadList()
-  },[Pro_id])
+  },[pro_id])
 
     return (
         <div class="insert">
@@ -57,7 +57,7 @@ export default function Mesproduct() {
                   <td>{product.pro_num}</td>
                   <td>{product.pro_size}</td>
                   <td>{product.pro_img}</td>
-                  <td><EditProduct
+                  <td><EditProduct 
                     pro_id = {product.pro_id}
                     pro_name = {product.pro_name}
                     pro_cost = {product.pro_cost}
@@ -65,7 +65,7 @@ export default function Mesproduct() {
                     pro_size = {product.pro_size}
                     pro_img = {product.pro_img}
                     />
-              </td>
+                   <button type="button" class="btn btn-default btn-sm">แก้ไขข้อมูล</button></td>
             </tr>)
   })}
 

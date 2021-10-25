@@ -4,17 +4,14 @@
     transform: translate(-50%, -50%);
     width: 1200px;
     position: relative;
-    top: 50px;
   }
 
   /* ปุ่มเพิ่มสินค้า */
   .b1 {
-    text-align: center;
+    text-align: center;;
     margin-top: 20px;
     margin-bottom: 20px;
   }
-
-  @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
 
   span {
 
@@ -79,3 +76,15 @@
     -moz-animation: glow 2s ease-in-out infinite alternate;
     animation: glow 2s ease-in-out infinite alternate;
   }
+  .table{
+    width:100%;
+  }
+  table, th, td{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+

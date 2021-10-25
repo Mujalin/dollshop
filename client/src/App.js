@@ -21,16 +21,15 @@ import Location from "./components/Location";
 export default function App() {
   return (
     <main className="text-gray-400 bg-gray-900 body-font">
-      
+      <Navbar />
       
       <Router>
-      <Navbar/>
         <Switch>
           <Route exact path="/">
             
-            <About/>
-            <Projects/>
-            <Skills/>
+            <About />
+            <Projects />
+            <Skills />
             <Testimonials />
             <Contact />
           </Route>
@@ -54,7 +53,6 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
-      
     </main>
   );
 }
