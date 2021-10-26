@@ -14,6 +14,7 @@ import Cart from "./components/Cart";
 import Mesproduct from "./components/Mesproduct";
 import Register from "./components/Register";
 import './q.css';
+import Inproduct from "./components/Inproduct";
 import Location from "./components/Location";
 
 
@@ -48,9 +49,13 @@ export default function App() {
           <Route exact path="/Register">
             <Register />
           </Route>
-          <Route exact path="/Location">
-            <Location />
-          </Route>
+          <Route  exact path = "/Inpro">
+            <Inproduct/>
+            </Route>
+          <Route  exact path = "/Location">
+            <Location/>
+            </Route>
+
         </Switch>
       </Router>
     </main>

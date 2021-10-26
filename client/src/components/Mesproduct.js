@@ -33,7 +33,8 @@ export default function Mesproduct() {
           </div>
         </div>
         <div class="b1">
-          <span><a href="insert_product.php"></a></span>
+          <span><a href= "/Inproduct.js" >
+            </a></span>
         </div>
         <table class='table table-bordered table-striped'> 
           <tr>
@@ -57,16 +58,9 @@ export default function Mesproduct() {
                   <td>{product.pro_num}</td>
                   <td>{product.pro_size}</td>
                   <td>{product.pro_img}</td>
-                  <td><EditProduct 
-                    pro_id = {product.pro_id}
-                    pro_name = {product.pro_name}
-                    pro_cost = {product.pro_cost}
-                    pro_price = {product.pro_num}
-                    pro_size = {product.pro_size}
-                    pro_img = {product.pro_img}
-                    />
-                   <button type="button" class="btn btn-default btn-sm">แก้ไขข้อมูล</button></td>
             </tr>)
+             ////onClick={()=>deleteItem(elt.id)}>Del</button></td>
+            /////<button type="button" class="btn btn-default btn-sm">แก้ไขข้อมูล</button>
   })}
 
             </tbody>

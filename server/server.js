@@ -151,7 +151,29 @@ app.put('/update/:id',async(req,res)=>{
         console.error(err.massage)
     }
 })
-
+app.put("/updateProduct/:id", (req, res) => {
+  try {
+    let { id } = req.params;
+    let  {pro_id,pro_name,pro_cost,prod_price,pro_num,pro_size,pro_img} = req.body;
+    const sql = 
+    `UPDATE product SET pro_name="${pro_name}",pro_cost="${pro_cost}
+    ,prod_price="${prod_price}",pro_num="${pro_num}",pro_size="${pro_size}",pro_img="${pro_img}"
+    WHERE pro_id="${pro_id}"`
+    console.log(id);
+    pool.query(sql, (err, results) => {
+      if (err) {
+        res.send(err.message);
+        throw err;
+      }
+      console.log(sql);
+      console.log(results);
+      console.log(sql);
+      res.send("updated successfully");
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 
 
