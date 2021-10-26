@@ -45,17 +45,17 @@ import { useLocation } from "react-router";
 
     }, [])
     return (
-    <div>
+    <div className="bg-produce">
         
         {productList.map((products) => {
                
 
                 return (
 
-                
-        <div className="box">
-            <form name="myForm" onSubmit={insertCart} >
-            <img className="" src={products.pro_img} />
+                <form name="myForm" onSubmit={insertCart} >
+        
+            <div className="box">
+            <img className="pro-img" src={products.pro_img} />
             <div className="text">
                 <h2>{products.pro_name} {products.pro_size} นิ้ว</h2>
             </div>
@@ -71,12 +71,10 @@ import { useLocation } from "react-router";
                 <button className="glow-hover" type="submit" >เพิ่มลงตะกร้าสินค้า</button>
                 
             </div>
-            </form>
-        </div>
+            
+        </div></form>
         )
          })}
     </div>
     )
     }
-    
-     

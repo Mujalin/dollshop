@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react'
 export default function ListCom() {
     const [pro_name, setpro_name] = useState(["ตุ๊กตา"])
     const [productList, setproductList] = useState([])
-    
-    
+
+
     const loadList = async () => {
         try {
 
@@ -38,7 +38,7 @@ export default function ListCom() {
                 }}
             />
             {productList.map((products) => {
-                
+
                 let locat = "./produce/"+products.pro_id
                 return (
 
@@ -63,7 +63,3 @@ export default function ListCom() {
     )
 
 }
-
-
-
-
