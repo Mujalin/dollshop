@@ -171,11 +171,10 @@ app.put('/update/:id',async(req,res)=>{
 app.put("/updateProduct/:id", (req, res) => {
   try {
     let { id } = req.params;
-    let  {pro_id,pro_name,pro_cost,prod_price,pro_num,pro_size,pro_img} = req.body;
+    let  {pro_id,pro_name,pro_cost,pro_price,pro_num,pro_size,pro_img} = req.body;
     const sql = 
-    `UPDATE product SET pro_name="${pro_name}",pro_cost="${pro_cost}
-    ,prod_price="${prod_price}",pro_num="${pro_num}",pro_size="${pro_size}",pro_img="${pro_img}"
-    WHERE pro_id="${pro_id}"`
+    `UPDATE product SET pro_name="${pro_name}",pro_cost=${pro_cost}
+    ,pro_price=${pro_price},pro_num=${pro_num},pro_size=${pro_size},pro_img="${pro_img}" WHERE pro_id="${pro_id}"`;
     console.log(id);
     pool.query(sql, (err, results) => {
       if (err) {
@@ -191,7 +190,6 @@ app.put("/updateProduct/:id", (req, res) => {
     console.error(err.message);
   }
 });
-
 
 
 //delete

@@ -29,7 +29,7 @@ export default function EditProduct(props) {
 return (
     <div>
       <div>
-        {/* Button to Open the Modal */}
+        {/* Button to Open the Modal
         <button
           type="button"
           className="btn btn-primary"
@@ -37,7 +37,7 @@ return (
           data-target={`#pro_id${pro_id}`} //"#myModal"
         >
           Edit
-        </button>
+        </button> */}
         <div className = "edit">
        <h1 class="text-center" >แก้ไขข้อมูลสินค้า</h1>
         <table class='table  table-striped'>

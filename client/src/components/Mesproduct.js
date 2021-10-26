@@ -1,70 +1,82 @@
 import React,{useState,useEffect} from 'react'
-import '../css/MesPro.css'
-import EditProduct from './EditProduct'
+import EditPro from './EditPro'
 
 export default function Mesproduct() {
-  const [pro_id,setId] = useState([])
-  const [pro_name,setName] = useState("ตุ๊กตา")
-  const [pro_list,setlist] = useState([])
+  const [pro_id,setId] = useState([]);
+  const [pro_name,setName] = useState("ตุ๊กตา");
+  const [pro_list, setList] = useState([]);
 
-   const loadList = async()=>{
-      try{
+  const loadList = async () => {
+    try {
+      const resp = await fetch(
+        `http://localhost:4000/getProduct/${pro_name}`
+      );
+      const jsonData = await resp.json();
 
-          const resp = await fetch(`http://localhost:4000/getProduct/${pro_name}`);
-          const jsonData = await resp.json() 
-          setlist(jsonData)
-          
-          console.log("Resp",resp)
+      setList(jsonData);
 
-      }catch(err){
-          console.error(err.message)
-      }
-  }
-  useEffect(()=>{
-      console.log("Enter useEffect()")
-      loadList()
-  },[pro_id])
-
+      console.log("Resp", resp);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+  useEffect(() => {
+    console.log("Enter useEffect()");
+    loadList();
+  }, [pro_id]);
     return (
-        <div class="insert">
-        <div class="row">
-          <div class="neons col-12">
-            <h1><em>จัดการข้อมูลสินค้า</em></h1>
-          </div>
-        </div>
-        <div class="b1">
-          <span><a href= "/Inproduct.js" >
-            </a></span>
-        </div>
-        <table class='table table-bordered table-striped'> 
-          <tr>
-          <th class="text-center">รหัสสินค้า</th>
-          <th class="text-center">ชื่อสินค้า</th>
-            <th class="text-center">ต้นทุน</th>
-            <th class="text-center">ราคา</th>
-            <th class="text-center">จำนวนคงเหลือ</th>
-            <th class="text-center">ขนาด</th>
-            <th class="text-center">รูป</th>  
-            <th class="text-center">แก้ไข</th>          
-          </tr>
-          <tbody>
-            {pro_list.map((product) => {
-                return(
-                  <tr> 
-                  <td>{product.pro_id}</td>
-                  <td>{product.pro_name}</td>
-                  <td>{product.pro_cost}</td>
-                  <td>{product.pro_price}</td>
-                  <td>{product.pro_num}</td>
-                  <td>{product.pro_size}</td>
-                  <td>{product.pro_img}</td>
-            </tr>)
-             ////onClick={()=>deleteItem(elt.id)}>Del</button></td>
-            /////<button type="button" class="btn btn-default btn-sm">แก้ไขข้อมูล</button>
-  })}
 
-            </tbody>
-          </table>
-      </div>
+          <div class="insert">
+              <div class="row">
+              <div class="neons col-12">
+                <h1><em>จัดการข้อมูลสินค้า</em></h1>
+                </div>
+                </div>
+                    <div class="b1">
+                    <span><a href= "/Inproduct.js" ></a></span>
+                    </div>
+                    <table class="table">
+                            <thead>
+                              <tr>
+                              <th>รหัสสินค้า </th>
+                              <th>ชื่อสินค้า</th>
+                              <th>ต้นทุน</th>
+                              <th>ราคา</th>
+                              <th>จำนวนคงเหลือ</th>
+                              <th>ขนาด</th>
+                              <th>รูป</th>
+                              <th>แก้ไข</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {pro_list.map((product) => {
+                                    return (
+                                      <tr>
+                                        <td>{product.pro_id}</td>
+                                        <td>{product.pro_name}</td>
+                                        <td>{product.pro_cost}</td>
+                                        <td>{product.pro_price}</td>
+                                        <td>{product.pro_num}</td>
+                                        <td>{product.pro_size}</td>
+                                        <td>{product.pro_img}</td>
+                                        <td>
+                                          <EditPro
+                                            pro_id={product.pro_id}                    
+                                            pro_name={product.pro_name}
+                                            pro_cost={product.pro_cost}
+                                            pro_price={product.pro_price}
+                                            pro_num={product.pro_num}
+                                            pro_size={product.pro_size}
+                                            pro_img={product.pro_img}
+                                          />
+                                        </td>
+                                      </tr>
+                                  );
+                                })}
+                              </tbody>
+                      </table>
+                      
+       </div>
+
     )
   }

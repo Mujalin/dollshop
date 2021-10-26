@@ -15,7 +15,8 @@ import Mesproduct from "./components/Mesproduct";
 import Register from "./components/Register";
 import './q.css';
 // import Inproduct from "./components/Inproduct";
-import Location from "./components/Location";
+// import Location from "./components/Location";
+import EditPro from "./components/EditPro";
 
 
 
@@ -52,8 +53,11 @@ export default function App() {
           {/* <Route  exact path = "/Inpro">
             <Inproduct/>
             </Route> */}
-          <Route  exact path = "/Location">
+          {/* <Route  exact path = "/Location">
             <Location/>
+            </Route> */}
+            <Route  exact path = "/EdPro">
+            <EditPro/>
             </Route>
 
         </Switch>
