@@ -69,8 +69,8 @@ app.get("/getProduct/:name", async(req, res) => {
   app.get("/getcart", async(req, res) => {
     try {
       // let {id} = req.params;
-        
-      const sql = "SELECT * FROM sale_detail,product WHERE product.pro_id=sale_detail.pro_id and cus_id='cus1' ; ";
+  
+      const sql = "SELECT * FROM cart,product WHERE product.pro_id=cart.pro_id and cus_id='cus1' ; ";
       
       pool.query(sql, (err, results) => {
   
@@ -81,21 +81,21 @@ app.get("/getProduct/:name", async(req, res) => {
       console.error(err.message);
     }
   });
-  // app.get("/getcart1", async(req, res) => {
-  //   try {
-  //     // let {id} = req.params;
+  app.get("/getcart1", async(req, res) => {
+    try {
+      // let {id} = req.params;
   
-  //     const sql = "SELECT sum(product.pro_price*cart.amount)total FROM cart,product WHERE product.pro_id=cart.pro_id and cus_id='cus1' ; ";
+      const sql = "SELECT sum(product.pro_price*cart.amount)total FROM cart,product WHERE product.pro_id=cart.pro_id and cus_id='cus1' ; ";
       
-  //     pool.query(sql, (err, results) => {
+      pool.query(sql, (err, results) => {
   
-  //       console.log(results);
-  //       res.send(results);
-  //     });
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // });
+        console.log(results);
+        res.send(results);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
 
 //post  
 app.post("/insertCart", async(req, res) => {
@@ -103,7 +103,7 @@ app.post("/insertCart", async(req, res) => {
     
     const {pro_id,amount}=req.body
 
-    const sql = `INSERT INTO sale_detail (sale_id,cus_id,pro_id,sale_amount) values('sale01','cus1','${pro_id}',${amount}); `;
+    const sql = `INSERT INTO cart (cus_id,pro_id,amount) values('cus1','${pro_id}',${amount});INSERT INTO sale_detail (sale_id,cus_id,pro_id,sale_amount) values('sale01','cus1','${pro_id}',${amount}); `;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
@@ -182,7 +182,8 @@ app.delete("/deleteCart", async(req, res) => {
   try {
     
     const {pro_id}=req.body
-    const sql = `delete from sale_detail where cus_id='cus1' and pro_id='${pro_id}'`;
+
+    const sql = `delete from cart where cus_id='cus1'and pro_id='${pro_id}';delete from sale_detail where cus_id='cus1' and pro_id='${pro_id}`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
@@ -196,7 +197,37 @@ app.delete("/deleteCart", async(req, res) => {
   }
 });
 
+//POST Inproduct by aum ^_^
+// app.post('/inproduct',async(req,res)=>{
+//   try {
+//     const {pro_id,pro_name,pro_cost,pro_price,pro_num,pro_size,fileupload}= req.body;
+//     let data = pool.query(
+//       `INSERT INTO product VALUES('${pro_name}','${pro_cost}' ,'${pro_price}','${pro_num}','${pro_size}','${pro_img}');`
+//     )
+//     console.log(pro_id,pro_name,pro_cost,pro_proice,pro_num,pro_size,fileupload);
+//     res.json("Insert complaete....")
+//   }catch (err) {
+//     console.error(err.message);
+//   }
+// })
 
+app.post("/inproduct", async(req, res) => {
+  try {
+    
+    const {pro_id,pro_name,pro_cost,pro_price,pro_num,pro_size,fileupload}=req.body
 
+    const sql =  `INSERT INTO product VALUES('${pro_id}','${pro_name}','${pro_cost}' ,'${pro_price}','${pro_num}','${pro_size}','${fileupload}');`
+    
+    pool.query(sql, (err, results) => {
+      console.log(sql)
+      console.log(results);
+      res.send(results);
+      
+    });
+
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 

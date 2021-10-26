@@ -15,7 +15,7 @@ import Mesproduct from "./components/Mesproduct";
 import Register from "./components/Register";
 import './q.css';
 // import Inproduct from "./components/Inproduct";
-import Location from "./components/Location";
+import Location from "./components/location";
 
 
 
