@@ -5,11 +5,11 @@ import { useLocation } from "react-router";
 export default function cart() {
    
     const [productList, setproductList] = useState([])
-    let location = useLocation();
-    let pro_id = location.pathname.split("/")[2];
-    const total=(e)=>{
+    // let location = useLocation();
+    // let pro_id = location.pathname.split("/")[2];
+    const [pro_id,setpro_id]=useState([])
+    let total=0
 
-    }
     const deleteCart =(e)=>{
         e.preventDefault();
     try {
@@ -49,7 +49,7 @@ export default function cart() {
         <div>
  <a href="/location"><button className="glow-hover" type="submit" >ดำเนินการสั่งซื้อ</button></a>
             {productList.map((products) => {
-                
+                total += products.pro_price*products.pro_num
                 
                 return (
                     <div>
@@ -61,30 +61,19 @@ export default function cart() {
                             
                             <div className="card-body">
                                 <h5 className="card-title">{products.pro_name}</h5>
-                                <p>จำนวน {products.amount}</p>
+                                <p>จำนวน {products.pro_num}</p>
                                 <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
                                 
                             </div>
                         </div>
-                        <button className="glow-hover" type="submit" >Delete</button>
+                        <button className="glow-hover" type="submit" onClick={(x=>{ setpro_id(products.pro_id)})}>Delete</button>
                     </div>
                     </form>
                     
                     </div>
                 )
             })}
-            <p id="demo">ราคารวม {total()
-            // ()=>{
-            //     var total=0
-            //     for(let i=0;i<productList.length;i++){
-            //         total += productList[i].pro_price*productList[i].amount
-                    
-            //     }
-
-            //     return (<p>{total}</p>)
-            // }
-       
-                }
+            <p>ราคารวม {total}
                 
 
 
