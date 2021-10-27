@@ -70,7 +70,7 @@ app.get("/getProduct/:name", async(req, res) => {
     try {
       // let {id} = req.params;
   
-      const sql = "SELECT * FROM sale_detail,product WHERE product.pro_id=sale_detail.pro_id and cus_id='cus1' ; ";
+      const sql = `SELECT * FROM sale_detail,product WHERE product.pro_id=sale_detail.pro_id and cus_id='cus1' ; `;
       
       pool.query(sql, (err, results) => {
   
@@ -82,16 +82,17 @@ app.get("/getProduct/:name", async(req, res) => {
     }
   });
 
-  app.get("/register", async(req, res) => {
+  app.get("/login", async(req, res) => {
     try {
       const {cus_user,cus_pass}=req.body
       
-      const sql = `SELECT * FROM customer WHERE cus_user=${cus_user} and cus_pass=${cus_pass} `;
+      const sql = `SELECT * FROM customer WHERE cus_user='${cus_user}' and cus_pass='${cus_pass}' `;
       
       pool.query(sql, (err, results) => {
         
         console.log(results);
         res.send(results);
+  
       });
     } catch (err) {
       console.error(err.message);

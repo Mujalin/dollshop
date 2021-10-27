@@ -2,7 +2,7 @@ import React,{ useState } from 'react'
 
     
 
-export default function Register() {
+export default function Login() {
   const [cus_user,setcus_user]=useState([])
   const [cus_pass,setcus_pass]=useState([])
   
@@ -11,13 +11,13 @@ export default function Register() {
 try {
     
   const bodyData = { cus_user,cus_pass};
-  const resp = fetch("http://localhost:4000/Register", {
+  const resp = fetch("http://localhost:4000/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(bodyData),
   });
   
-  window.location = `/product`;
+  window.location = `/login`;
 } catch (err) {
   console.error(err.message);
 }
@@ -35,8 +35,8 @@ try {
             <span className="span">or use your account</span>
           </div>
           <form onSubmit={selectlogin} >
-          <input className="input" type="text" onChange={(x=>{ setcus_user(x.target.value)})} placeholder="Username" />
-          <input className="input" type="password" onChange={(x=>{ setcus_pass(x.target.value)})}  placeholder="Password" />
+          <input className="input" type="text" onChange={(x=>{ setcus_user(x.target.value)})} required placeholder="Username" />
+          <input className="input" type="password" onChange={(x=>{ setcus_pass(x.target.value)})} required placeholder="Password" />
           <button type="submit" >Sign In</button>
         </form>
         <br/>

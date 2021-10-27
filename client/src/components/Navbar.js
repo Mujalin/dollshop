@@ -17,7 +17,7 @@ export default function Navbar() {
         <li><a href="/">ส่งหลักฐานการชำระเงิน</a></li>
         <li><a href="/">รายการจัดส่งสินค้า</a></li>
         <li><a href="/cart"><i className="fas fa-shopping-cart" />Cart </a></li>
-        <li><a href="/Register">For admin</a></li>
+        <li><a href="/login">For admin</a></li>
 
       </ul>
     </nav>

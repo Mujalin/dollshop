@@ -19,7 +19,7 @@ export default function EditPro(props) {
               }
     
             )
-                window.location="/Mespro"
+                window.location="/Mesproduct"
             }catch(err){
                 console.error(err.message)
             }

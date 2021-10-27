@@ -36,7 +36,7 @@ export default function Mesproduct() {
                 <br/>
                 </div>
                     <div class="b1">
-                    <span><a href= "/Inproduct.js" ></a></span>
+                    <span><a href= "/Inproduct" ></a></span>
                     </div>
                     <table class="table">
                       
