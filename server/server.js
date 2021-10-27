@@ -70,7 +70,7 @@ app.get("/getProduct/:name", async(req, res) => {
     try {
       // let {id} = req.params;
   
-      const sql = `SELECT * FROM sale_detail,product WHERE product.pro_id=sale_detail.pro_id and cus_id='cus1' ; `;
+      const sql = `SELECT * FROM cart,product WHERE product.pro_id=cart.pro_id and sale_id='sale01' ; `;
       
       pool.query(sql, (err, results) => {
   
@@ -105,7 +105,7 @@ app.post("/insertCart", async(req, res) => {
     
     const {pro_id,amount}=req.body
 
-    const sql = `INSERT INTO sale_detail (sale_id,cus_id,pro_id,sale_amount) values('sale01','cus1','${pro_id}',${amount}); `;
+    const sql = `INSERT INTO cart (sale_id,pro_id,amount) values('sale01','${pro_id}',${amount}); INSERT INTO sale_detail (sale_id,pro_id,sale_amount) values('sale01','${pro_id}',${amount}); `;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
@@ -119,12 +119,15 @@ app.post("/insertCart", async(req, res) => {
   }
 });
 
+
+
+//post and delete
 app.post("/insertloc", async(req, res) => {
   try {
     
     const {cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone}=req.body
     const loc_desc=loc_desc1+' '+loc_desc2+' '+loc_desc3+' '+loc_desc4+' '+loc_desc5
-    const sql = `insert into location values('cus10','${loc_desc}','loc10'); insert into cargo values ('cargo0','sale0','0','2020-20-20','loc10','${cargo_re_name}','${cargo_re_phone}','กำลัง');`;
+    const sql = ` insert into location values('cus10','${loc_desc}','loc10'); insert into cargo values ('cargo0','sale0','0','2020-20-20','loc10','${cargo_re_name}','${cargo_re_phone}','กำลัง');`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
@@ -158,18 +161,6 @@ app.post("/inproduct", async(req, res) => {
 });
 
 //put 
-app.put('/update/:id',async(req,res)=>{
-    try {
-        let {id}=req.params
-        let {name,price} =req.body
-        let data=await pool.query(
-            "update fruits set name=$1,price=$2 where id=$3",[name,price,id]
-        )
-        res.json("data has update......")
-    } catch (err) {
-        console.error(err.massage)
-    }
-})
 app.put("/updateProduct/:id", (req, res) => {
   try {
     let { id } = req.params;
@@ -200,7 +191,7 @@ app.delete("/deleteCart", async(req, res) => {
     
     const {pro_id}=req.body
 
-    const sql = `delete from sale_detail where cus_id='cus1' and pro_id='${pro_id}'`;
+    const sql = `delete from cart where sale_id='sale01' and pro_id='${pro_id}';delete from sale_detail where sale_id='sale01' and pro_id='${pro_id}'`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)

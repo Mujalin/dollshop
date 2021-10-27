@@ -42,13 +42,14 @@ export default function Mesproduct() {
                       
                             <thead>
                               <tr>
+                              <th>รูป</th>
                               <th>รหัสสินค้า </th>
                               <th>ชื่อสินค้า</th>
                               <th>ต้นทุน</th>
                               <th>ราคา</th>
                               <th>จำนวนคงเหลือ</th>
                               <th>ขนาด</th>
-                              <th>รูป</th>
+                              
                               <th>แก้ไข</th>
                               </tr>
                             </thead>
@@ -56,13 +57,14 @@ export default function Mesproduct() {
                                 {pro_list.map((product) => {
                                     return (
                                       <tr>
+                                        <td className="image"><img className="image" src={product.pro_img}/></td>
                                         <td>{product.pro_id}</td>
                                         <td>{product.pro_name}</td>
                                         <td>{product.pro_cost}</td>
                                         <td>{product.pro_price}</td>
                                         <td>{product.pro_num}</td>
                                         <td>{product.pro_size}</td>
-                                        <td>{product.pro_img}</td>
+                                        
                                         <td>
                                           <EditPro
                                             pro_id={product.pro_id}                    

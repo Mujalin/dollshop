@@ -49,7 +49,7 @@ export default function cart() {
         <div>
  <a href="/location"><button className="glow-hover" type="submit" >ดำเนินการสั่งซื้อ</button></a>
             {productList.map((products) => {
-                total += products.pro_price*products.sale_amount
+                total += products.pro_price*products.amount
                 
                 return (
                     <div>
@@ -61,7 +61,7 @@ export default function cart() {
                             
                             <div className="card-body">
                                 <h5 className="card-title">{products.pro_name}</h5>
-                                <p>จำนวน {products.sale_amount}</p>
+                                <p>จำนวน {products.amount}</p>
                                 <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
                                 
                             </div>

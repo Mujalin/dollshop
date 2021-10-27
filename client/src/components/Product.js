@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 
-export default function ListCom() {
+export default function Product() {
     const [pro_name, setpro_name] = useState(["ตุ๊กตา"])
     const [productList, setproductList] = useState([])
 

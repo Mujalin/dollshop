@@ -103,7 +103,8 @@ export default function EditPro(props) {
                                 id="item"value = {pro_size}
                             onChange={e=>{setSize(e.target.value)}}></input></td></tr>
                         <tr>
-                             <td class="td2"><input type="file" 
+                        <td class="td1" >รูป : </td>
+                             <td class="td2"><input type="text" 
                                 className="form-control"
                                 id="item"
                                 // value = {pro_img}

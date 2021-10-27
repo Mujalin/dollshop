@@ -17,7 +17,7 @@ try {
     body: JSON.stringify(bodyData),
   });
   
-  window.location = `/login`;
+  window.location = `/mesproduct`;
 } catch (err) {
   console.error(err.message);
 }

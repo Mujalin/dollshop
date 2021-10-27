@@ -20,16 +20,17 @@ export default function location() {
         body: JSON.stringify(bodyData),
       });
       
-      window.location = `/product`;
+      window.location = `/`;
     } catch (err) {
       console.error(err.message);
     }
     }
 
     return (
+      
         <div>
             <form onSubmit={insertloc} >
-      <div className="boot">
+      <div className="boot"><br/>
         <label>ชื่อผู้รับสินค้า </label>
         <input className="sec" type="text" onChange={(x=>{ setcargo_re_name(x.target.value)})}  required placeholder="ชื่อผู้รับ" />
         <br /><br />

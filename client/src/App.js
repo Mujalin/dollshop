@@ -7,15 +7,14 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Testimonials from "./components/Testimonials";
 import Produce from "./components/produce";
-import ListCom from "./components/ListCom";
 import Cart from "./components/Cart";
 import Mesproduct from "./components/Mesproduct";
 import Login from "./components/Login";
 import './q.css';
 import Inproduct from "./components/Inproduct";
 import Location from "./components/Location";
-import EditPro from "./components/EditPro";
 import NavbarAdmin from "./components/NavbarAdmin";
+import Product from "./components/Product";
 
 
 
@@ -35,9 +34,9 @@ export default function App() {
             <Testimonials />
             <Contact />
           </Route>
-          <Route exact path="/ListCom">
+          <Route exact path="/Product">
           <Navbar />
-          <ListCom/>
+          <Product/>
           </Route>
           <Route exact path="/produce/:pro_id">
           <Navbar />
@@ -57,7 +56,6 @@ export default function App() {
 
 {/* หลังบ้าน */}
       <Router>
-      
         <Switch>
         <Route  exact path = "/Login">
         <Navbar />
@@ -71,8 +69,6 @@ export default function App() {
             <NavbarAdmin/>
             <Inproduct/>
             </Route>
-
-      
         </Switch>
       </Router>
     </main>

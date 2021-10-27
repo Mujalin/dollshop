@@ -21,6 +21,7 @@ export default function Inproduct() {
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(bodyStr)
             })
+            window.location = `/mesproduct`;
         } catch (err){
             console.error(err.message);
         }
@@ -30,6 +31,7 @@ export default function Inproduct() {
     return (
     <div class="in1">
         <form onSubmit={doInsertForm}>
+            <br/>
         <h1 class="text-center">เพิ่มข้อมูลสินค้า</h1>
         <table class='table  table-striped'>
             <tr>
