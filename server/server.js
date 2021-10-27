@@ -81,21 +81,22 @@ app.get("/getProduct/:name", async(req, res) => {
       console.error(err.message);
     }
   });
-  // app.get("/getcart1", async(req, res) => {
-  //   try {
-  //     // let {id} = req.params;
-  
-  //     const sql = "SELECT sum(product.pro_price*cart.amount)total FROM cart,product WHERE product.pro_id=cart.pro_id and cus_id='cus1' ; ";
+
+  app.get("/register", async(req, res) => {
+    try {
+      const {cus_user,cus_pass}=req.body
       
-  //     pool.query(sql, (err, results) => {
-  
-  //       console.log(results);
-  //       res.send(results);
-  //     });
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // });
+      const sql = `SELECT * FROM customer WHERE cus_user=${cus_user} and cus_pass=${cus_pass} `;
+      
+      pool.query(sql, (err, results) => {
+        
+        console.log(results);
+        res.send(results);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
 
 //post  
 app.post("/insertCart", async(req, res) => {

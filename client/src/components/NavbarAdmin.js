@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Navbar() {
+export default function NavbarAdmin() {
     return (
         <div>
-  <section style={{backgroundColor: 'gray-800'}}>
+            <section style={{backgroundColor: 'gray-800'}}>
     <div className="header1">
       <div className="icon">
         <img src="http://image.free.in.th/v/2013/is/211026123239.png" />
@@ -17,12 +17,10 @@ export default function Navbar() {
         <li><a href="/">ส่งหลักฐานการชำระเงิน</a></li>
         <li><a href="/">รายการจัดส่งสินค้า</a></li>
         <li><a href="/cart"><i className="fas fa-shopping-cart" />Cart </a></li>
-        <li><a href="/Register">For admin</a></li>
 
       </ul>
     </nav>
   </section>
-</div>
-
+        </div>
     )
 }

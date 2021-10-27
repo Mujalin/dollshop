@@ -8,6 +8,7 @@ export default function location() {
     const [loc_desc4,setloc_desc4]=useState([])
     const [loc_desc5,setloc_desc5]=useState([])
     const [cargo_re_phone,setcargo_re_phone]=useState([])
+    
     const insertloc =(e)=>{
         e.preventDefault();
     try {
