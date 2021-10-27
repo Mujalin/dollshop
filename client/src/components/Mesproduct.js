@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import '../css/Mes.css'
 import EditPro from './EditPro'
 
 export default function Mesproduct() {
@@ -29,13 +30,16 @@ export default function Mesproduct() {
           <div class="insert">
               <div class="row">
               <div class="neons col-12">
+            
                 <h1><em>จัดการข้อมูลสินค้า</em></h1>
                 </div>
+                <br/>
                 </div>
                     <div class="b1">
                     <span><a href= "/Inproduct.js" ></a></span>
                     </div>
                     <table class="table">
+                      
                             <thead>
                               <tr>
                               <th>รหัสสินค้า </th>
