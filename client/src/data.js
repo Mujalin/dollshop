@@ -1,4 +1,37 @@
-
+export const projects = [
+  {
+    title: "React Reserve",
+    subtitle: "MERN Stack",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+    image: "./project-1.gif",
+    link: "https://reactbootcamp.com",
+  },
+  {
+    title: "React Tracks",
+    subtitle: "React and Python",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+    image: "./project-2.gif",
+    link: "https://reactbootcamp.com",
+  },
+  {
+    title: "DevChat",
+    subtitle: "React and Firebase",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+    image: "./project-3.gif",
+    link: "https://reactbootcamp.com",
+  },
+  {
+    title: "Epic Todo App",
+    subtitle: "React Hooks",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
+    image: "./project-4.gif",
+    link: "https://reactbootcamp.com",
+  },
+];
 
 export const testimonials = [
   {
@@ -39,10 +72,10 @@ export const testimonials = [
 ];
 
 export const skills = [
-  "ร้านค้ารับประกันสินค้าเป็นแบบทำมือ",
-  "หากมีการชำรุดร้านค้าจะเปลี่ยนให้ฟรี",
   "ร้านค้าตั้งอยู่ที่ เลขที่ 57 หมู่ 1 โขมง อำเภอท่าใหม่ จันทบุรี 22170",
+  "Facebook : บูรพากิ้ฟท์ช้อป",
   "เบอร์ติดต่อ +6639310000",
+  "line : buugiftshop.",
   "เวลาเปิด/ปิด 08.00-04.30 น.",
-  "รับประกันรคุณภาพ",
+  "Gmail : 62310136@go.buu.ac.th",
 ];

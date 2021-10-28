@@ -8,10 +8,10 @@ export default function Testimonials() {
       <div className="container px-5 py-10 mx-auto text-center">
         <UsersIcon className="w-10 inline-block mb-4" />
         <h1 className="sm:text-4xl text-3xl font-medium title-font text-white mb-12">
-        letter from the shop
+        About as
         </h1>
         <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-            จดหมายส่วนนึงจากร้านบูรพากิฟท์ช็อปที่อยากส่งต่อถึงลูกค้า
+            ชื่อสมาชิกและข้อความถึงลูกค้า
           </p>
         <div className="flex flex-wrap m-4">
           {testimonials.map((testimonial) => (

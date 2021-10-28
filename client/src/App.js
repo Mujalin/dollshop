@@ -12,7 +12,7 @@ import Mesproduct from "./components/Mesproduct";
 import Login from "./components/Login";
 import './q.css';
 import InProduct from "./components/InProduct";
-import Location from "./components/Location";
+import Location from "./components/location";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Product from "./components/Product";
 
@@ -30,8 +30,8 @@ export default function App() {
           <Navbar />
             <About />
             <Projects />
-            <Skills />
             <Testimonials />
+            <Skills />
             <Contact />
           </Route>
           <Route exact path="/Product">

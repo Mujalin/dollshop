@@ -12,7 +12,7 @@ export default function Skills() {
           Shop details
           </h1>
           <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-            ร้านบูรพากิฟท์ช็อปขอนำเสนอข้อมูลร้านค้าเพื่อความสบายใจของลูกค้า เราจะบอกรายละเอียดต่างๆเพื่อเป็นประโยนช์กับลูกค้า
+            ลูกค้าสามารถดูรายเอียดต่างๆได้ตามข้อมูลด้านล่าง
           </p>
         </div>
         <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
