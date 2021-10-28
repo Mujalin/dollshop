@@ -51,42 +51,54 @@ export default function cart() {
 
     }, [])
     return (
-        <div>
- <a href="/location"><button className="glow-hover" type="submit" >ดำเนินการสั่งซื้อ</button></a>
+        
+            <div className="dd">
+                <form onSubmit={deleteCart}>
+ <table class="table">
+     <thead>
+        <tr>
+            <th class="text-center"> </th>
+            <th class="text-center"><m3>รหัสสินค้า</m3></th>
+            <th class="text-center"><m3>ชื่อสินค้า</m3></th>
+            <th class="text-center"><m3>ขนาด</m3></th>
+            <th class="text-center"><m3>จำนวน</m3></th>
+            <th class="text-center"><m3>ราคา</m3></th>
+            <th class="text-center"> </th>
+        </tr>
+    </thead>
+    <tbody>
+    
             {productList.map((products) => {
                 total += products.pro_price*products.sale_amount
                 saleid=products.sale_id
-
+                
+               
                 return (
                     
-                    <div>
-                        
-                    <form onSubmit={deleteCart}>
-                    <div class="at">
-                        <div className="card">
-                            
-                                <img className="card-img-top" src={products.pro_img} />
-                            
-                            <div className="card-body">
-                                <h5 className="card-title">{products.pro_name}</h5>
-                                <p>จำนวน {products.sale_amount}</p>
-                                <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
-                                
-                            </div>
-                        </div>
-                        <button className="glow-hover" type="submit" onClick={(x=>{ setpro_id(products.pro_id)})}>Delete</button>
-                    </div>
-                    </form>
+                     
                     
-                    </div>
+                    <tr>
+                        <td class="img-procart"><m3><img className="img-procart" src={products.pro_img}/></m3></td>
+                        <td class="text-cart"><br/><br/><m3>{products.pro_id}</m3></td>
+                        <td class="text-cart"><br/><br/><m3>{products.pro_name}</m3></td>
+                        <td class="text-cart"><br/><br/><m3>{products.pro_size}</m3></td>
+                        <td class="text-cart"><br/><br/><m3>{products.pro_num}</m3></td>
+                        <td class="text-cart"><br/><br/><m3>{products.pro_price}</m3></td>
+                        <td class="text-cart"><br/><br/><m3><button id="cart" className="name noselect" type="submit"  onClick={(x=>{ setpro_id(products.pro_id)})}>Delete</button></m3></td>
+                    </tr>
                 )
-            })}
-            <p>ราคารวม {total}
                 
+            })}
+            <tr>
+            <td colspan='4'></td>
+            <td class="text-center"><m3>ราคารวม</m3></td>
+            <td class="text-center"><m3>{total}</m3></td>
+            <td class="text-center"><a href="/location"><button class="btn btn-success" type="submit" >ดำเนินการสั่งซื้อ</button></a></td>
+           </tr>
+</tbody>
+</table></form>
+</div>
 
-
-           </p>
-        </div>
        
     )
 }

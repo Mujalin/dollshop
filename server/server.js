@@ -54,7 +54,7 @@ app.get("/getProduct/:name", async(req, res) => {
       // let name = req.params.name;
       // let id = req.params.pro_id;
       
-      const sql = `SELECT sale.sale_id,sum(sale_amount) sale_amount from sale,sale_detail where sale.sale_id=sale_detail.sale_id and sale_status="cart" LIMIT 1;  `;
+      const sql = `SELECT sale.sale_id,sum(sale_amount) sale_amount from sale,sale_detail,product where sale_detail.pro_id = product.pro_id and sale.sale_id=sale_detail.sale_id and sale_status="cart" LIMIT 1;  `;
       
       pool.query(sql, (err, results) => {
   
@@ -143,7 +143,8 @@ app.post("/insertloc", async(req, res) => {
     
     const {cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone, saleid,sale_amount}=req.body
     const loc_desc=loc_desc1+' '+loc_desc2+' '+loc_desc3+' '+loc_desc4+' '+loc_desc5
-    const sql = ` UPDATE sale SET sale_status='complete' WHERE sale_id=${saleid} ;insert into cargo (cargo_id, sale_id, cargo_num,  loc_desc,cargo_re_name, cargo_re_phone, cargo_status) values ('cargo0',${saleid},${sale_amount},'${loc_desc}','${cargo_re_name}','${cargo_re_phone}','กำลัง');`;
+    let cargo_id=Math.floor(Math.random() * 100000);
+    const sql = ` UPDATE sale SET sale_status='complete' WHERE sale_id=${saleid} ;insert into cargo (cargo_id, sale_id, cargo_num,  loc_desc,cargo_re_name, cargo_re_phone, cargo_status) values ('${cargo_id}',${saleid},${sale_amount},'${loc_desc}','${cargo_re_name}','${cargo_re_phone}','กำลังจัดส่ง');`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)

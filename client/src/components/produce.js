@@ -66,7 +66,7 @@ import { useLocation } from "react-router";
             if(saleid==undefined){
                 saleid=Math.floor(Math.random() * 100000);
               }
-return <h1>saleid = {saleid}</h1>
+return 
         })}
 
         {productList.map((products) => {
@@ -90,7 +90,7 @@ return <h1>saleid = {saleid}</h1>
             </div>
             <div className="but">
                 
-                <button className="glow-hover" type="submit" >เพิ่มลงตะกร้าสินค้า</button>
+                <button class="btn btn-success" type="submit" >เพิ่มลงตะกร้าสินค้า</button>
                 
             </div>
             

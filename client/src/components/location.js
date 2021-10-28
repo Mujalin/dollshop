@@ -67,7 +67,8 @@ export default function location() {
           {sale_id.map((sale)=>{
             saleid=sale.sale_id
             sale_amount=sale.sale_amount
-return <h1>saleid = {saleid}</h1>
+            
+return 
         })}
             <form onSubmit={insertloc} >
       <div className="boot"><br/>

@@ -137,12 +137,55 @@
     }
     
     /* cart */
-    .dd {
-        margin-top: 18%;
+  .dd {
+        margin-top: 35%;
         margin-left: 50%;
         transform: translate(-50%, -50%);
-        width: 1000px;
+        width: 1200px;
       }
-      .image{
-        width: 100px;
+      .img-procart{
+        width: 150px;
+        text-align: center;
       }
+    .text-center{
+      text-align: center;
+    }
+    .bg-cart{
+      height: 1500px;
+  }
+  .noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      -webkit-tap-highlight-color: transparent;
+  }
+  
+  #cart {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background: black;
+    border: 2px solid red;
+    box-shadow: 5px 5px 0 red,
+      -5px -5px 0 red,
+      -5px 5px 0 red,
+      5px -5px 0 red;
+    transition: 500ms ease-in-out;
+  }
+  
+  #cart:hover {
+    box-shadow: 20px 5px 0 red, -20px -5px 0 red;
+  }
+  
+  #cart:focus {
+    outline: none;
+  }
+.text-cart{
+  text-align: center;
+}
