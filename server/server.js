@@ -100,11 +100,28 @@ app.get("/getProduct/:name", async(req, res) => {
     }
   });
 
-  app.get("/login", async(req, res) => {
+  app.get("/getlogin", async(req, res) => {
     try {
       const {cus_user,cus_pass}=req.body
       
       const sql = `SELECT * FROM customer WHERE cus_user='${cus_user}' and cus_pass='${cus_pass}' `;
+      
+      pool.query(sql, (err, results) => {
+        
+        console.log(results);
+        res.send(results);
+   
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
+
+  app.get("/getcargo", async(req, res) => {
+    try {
+      
+      
+      const sql = `SELECT * FROM cargo `;
       
       pool.query(sql, (err, results) => {
         

@@ -61,14 +61,14 @@ export default function Mesproduct() {
                                       
                                       <tr>
                                         <td className="img-mes"><img className="img-mes" src={product.pro_img}/></td>
-                                        <td class="text-mes"><m3>{product.pro_id}</m3></td>
-                                        <td class="text-mes"><m3>{product.pro_name}</m3></td>
-                                        <td class="text-mes"><m3>{product.pro_cost}</m3></td>
-                                        <td class="text-mes"><m3>{product.pro_price}</m3></td>
-                                        <td class="text-mes"><m3>{product.pro_num}</m3></td>
-                                        <td class="text-mes"><m3>{product.pro_size}</m3></td>
+                                        <td class="text-mes"><br/><br/><m3>{product.pro_id}</m3></td>
+                                        <td class="text-mes"><br/><br/><m3>{product.pro_name}</m3></td>
+                                        <td class="text-mes"><br/><br/><m3>{product.pro_cost}</m3></td>
+                                        <td class="text-mes"><br/><br/><m3>{product.pro_price}</m3></td>
+                                        <td class="text-mes"><br/><br/><m3>{product.pro_num}</m3></td>
+                                        <td class="text-mes"><br/><br/><m3>{product.pro_size}</m3></td>
                                         
-                                        <td class="text-mes"><m3>
+                                        <td class="text-mes"><br/><br/><m3>
                                           <EditPro
                                              pro_id={product.pro_id}                    
                                             pro_name={product.pro_name}
@@ -83,8 +83,8 @@ export default function Mesproduct() {
                                   );
                                 })}
                               </tbody>
-                      </table></div>
-                      
+                      </table>
+                      <br/>  </div>      
        </div>
       
     )

@@ -82,7 +82,7 @@ export default function cart() {
                         <td class="text-cart"><br/><br/><m3>{products.pro_id}</m3></td>
                         <td class="text-cart"><br/><br/><m3>{products.pro_name}</m3></td>
                         <td class="text-cart"><br/><br/><m3>{products.pro_size}</m3></td>
-                        <td class="text-cart"><br/><br/><m3>{products.pro_num}</m3></td>
+                        <td class="text-cart"><br/><br/><m3>{products.sale_amount}</m3></td>
                         <td class="text-cart"><br/><br/><m3>{products.pro_price}</m3></td>
                         <td class="text-cart"><br/><br/><m3><button id="cart" className="name noselect" type="submit"  onClick={(x=>{ setpro_id(products.pro_id)})}>Delete</button></m3></td>
                     </tr>
@@ -96,7 +96,7 @@ export default function cart() {
             <td class="text-center"><a href="/location"><button class="btn btn-success" type="submit" >ดำเนินการสั่งซื้อ</button></a></td>
            </tr>
 </tbody>
-</table></form>
+</table></form><br/><br/><br/><br/><br/><br/><br/><br/>
 </div>
 
        

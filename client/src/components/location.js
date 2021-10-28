@@ -24,7 +24,7 @@ export default function location() {
         body: JSON.stringify(bodyData),
       });
       
-      window.location = `/..`;
+      window.location = `/payment`;
     } catch (err) {
       console.error(err.message);
     }
@@ -67,7 +67,6 @@ export default function location() {
           {sale_id.map((sale)=>{
             saleid=sale.sale_id
             sale_amount=sale.sale_amount
-            
 return 
         })}
             <form onSubmit={insertloc} >
@@ -173,8 +172,8 @@ return
         <label> เบอร์โทรศัพท์ </label>
         <input className="sec" type="text" onChange={(x=>{ setcargo_re_phone(x.target.value)})} size={20} required minLength={10} maxLength={10} placeholder="หมายเลขโทรศัพท์" />
         <br /><br />
-        <button className="glow-hover" type="submit" name="btnsummit"> บันทึก </button>
-        <button className="glow-hover" type="reset" name="clear"> ล้าง </button> 
+        <button class="b-in3" type="submit" name="btnsummit"> <m4>บันทึก</m4> </button>
+        <button class="b-in2" type="reset" name="clear"> <m4>ล้าง</m4> </button> 
       </div></form>
         </div>
     )

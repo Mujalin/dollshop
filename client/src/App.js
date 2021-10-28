@@ -12,9 +12,12 @@ import Mesproduct from "./components/Mesproduct";
 import Login from "./components/Login";
 import './q.css';
 import InProduct from "./components/InProduct";
-import Location from "./components/location";
+import Location from "./components/Location";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Product from "./components/Product";
+import Cargo from "./components/Cargo";
+import Payment from "./components/Payment";
+import Shoping from "./components/Shoping";
 
 
 
@@ -50,6 +53,14 @@ export default function App() {
           <Navbar />
             <Location/>
             </Route>
+            <Route  exact path = "/payment">
+          <Navbar />
+            <Payment/>
+            </Route>
+            <Route  exact path = "/shoping">
+          <Navbar />
+            <Shoping/>
+            </Route>
         </Switch>
       </Router>
 
@@ -68,6 +79,10 @@ export default function App() {
             <Route  exact path = "/Inproduct">
             <NavbarAdmin/>
             <InProduct/>
+            </Route>
+            <Route  exact path = "/cargo">
+            <NavbarAdmin/>
+            <Cargo/>
             </Route>
         </Switch>
       </Router>

@@ -12,9 +12,9 @@ export default function NavbarAdmin() {
     <nav className="stroke">
       <ul>
         <li><a href="/mesproduct"><i className="fa fa-home " style={{fontSize: 30, color: 'white'}} /></a></li>
-        <li><a href="/ListCom">สินค้า</a></li>
+        <li><a href="/cargo">รายการการจัดส่ง</a></li>
         
-        <li><a href="/login">ออกจากระบบ</a></li>
+        <li className="admin"><a href="/login">ออกจากระบบ</a></li>
         
         
 

@@ -66,7 +66,7 @@ import { useLocation } from "react-router";
             if(saleid==undefined){
                 saleid=Math.floor(Math.random() * 100000);
               }
-return 
+
         })}
 
         {productList.map((products) => {

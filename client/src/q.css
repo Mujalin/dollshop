@@ -138,9 +138,9 @@
     
     /* cart */
   .dd {
-        margin-top: 35%;
-        margin-left: 50%;
-        transform: translate(-50%, -50%);
+        margin-top: 10%;
+        margin-left: 10%;
+        ;
         width: 1200px;
       }
       .img-procart{
@@ -188,4 +188,164 @@
   }
 .text-cart{
   text-align: center;
+}
+
+
+/* location */
+label{
+  display: block;
+  margin-bottom:10px ;
+
+}.boot{
+  margin-top:100px;
+  text-align:center;
+}
+.sec{
+box-sizing: border-box;
+border: 1px solid #ddd;
+padding: 0 .75em;
+height: 2.507em;
+font-size: .97em;
+border-radius: 0;
+max-width: 100%;
+width: 500px;
+vertical-align: middle;
+background-color: #fff;
+color: #333;
+box-shadow: inset 0 1px 2px rgb(0 0 0 / 10%);
+transition: color .3s, border .3s, background .3s, opacity .3s;
+}
+
+/* login */
+
+
+.login-block {
+  width: 540px;
+  padding:30px;
+  background: #fff;
+  border-radius: 10px;
+  border-top: 10px solid #ff656c;
+  margin: 0 auto;
+}
+
+.login-block h1 {
+  text-align: center;
+  color: #000;
+  font-size: 28px;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.login-block input {
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-family: Montserrat;
+  padding: 0 30px 0 100px;
+  outline: none;
+}
+
+.login-block input#username {
+  background: #fff url('http://i.imgur.com/u0XmBmv.png') 30px top no-repeat;
+  background-size: 28px 120px;
+}
+
+.login-block input#username:focus {
+  background: #fff url('http://i.imgur.com/u0XmBmv.png') 30px bottom no-repeat;
+  background-size: 28px 120px;
+}
+
+.login-block input#password {
+  background: #fff url('http://i.imgur.com/Qf83FTt.png') 30px top no-repeat;
+  background-size: 28px 120px;
+}
+
+.login-block input#password:focus {
+  background: #fff url('http://i.imgur.com/Qf83FTt.png') 30px bottom no-repeat;
+  background-size: 28px 120px;
+}
+
+.login-block input:active, .login-block input:focus {
+  border: 2px solid #ff656c;
+}
+
+.login-block button {
+  width: 100%;
+  height: 50px;
+  background: #ff656c;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 2px solid #e15960;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: Montserrat;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-block button:hover {
+  background: #ff7b81;
+}
+.atom{
+  height: 400px;
+}
+.logo{
+        margin-top: 20%;
+        margin-left: 50%;
+        transform: translate(-50%, -50%);
+}
+.Howtopay{
+  text-align: center;
+} 
+m9{   
+
+  font-size: 80px;
+  color: burlywood;
+  margin: 25px;
+}
+m10,m11,m12{
+
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+m13{
+  text-align: center; 
+  color: crimson;
+}
+.image10{
+  margin: auto auto;
+  display: block;
+}
+.boxx{
+
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  margin-left: 50%;
+  margin-top: 30%;
+  transform: translate(-50%,-50%);
+  width: 1300px;
+  background-color: blanchedalmond;
+}
+.lau{
+  display: block;
+  box-sizing: border-box;
+  width: 25%;
+  margin-left: 50px;
+  margin-top: 50px;
+  text-align: center;
+}
+.admin{
+  position: absolute;
+  left: 1300px;
 }
