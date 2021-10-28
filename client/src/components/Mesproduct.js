@@ -42,15 +42,14 @@ export default function Mesproduct() {
                       
                             <thead>
                               <tr>
-                              <th>รูป</th>
-                              <th>รหัสสินค้า </th>
-                              <th>ชื่อสินค้า</th>
-                              <th>ต้นทุน</th>
-                              <th>ราคา</th>
-                              <th>จำนวนคงเหลือ</th>
-                              <th>ขนาด</th>
-                              
-                              <th>แก้ไข</th>
+                              <th><m3>รูป</m3></th>
+                              <th><m3>รหัสสินค้า</m3></th>
+                              <th><m3>ชื่อสินค้า</m3></th>
+                              <th><m3>ต้นทุน</m3></th>
+                              <th><m3>ราคา</m3></th>
+                              <th><m3>จำนวนคงเหลือ</m3></th>
+                              <th><m3>ขนาด</m3></th>
+                              <th><m3>แก้ไข</m3></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -58,23 +57,23 @@ export default function Mesproduct() {
                                     return (
                                       <tr>
                                         <td className="image"><img className="image" src={product.pro_img}/></td>
-                                        <td>{product.pro_id}</td>
-                                        <td>{product.pro_name}</td>
-                                        <td>{product.pro_cost}</td>
-                                        <td>{product.pro_price}</td>
-                                        <td>{product.pro_num}</td>
-                                        <td>{product.pro_size}</td>
+                                        <td><m3>{product.pro_id}</m3></td>
+                                        <td><m3>{product.pro_name}</m3></td>
+                                        <td><m3>{product.pro_cost}</m3></td>
+                                        <td><m3>{product.pro_price}</m3></td>
+                                        <td><m3>{product.pro_num}</m3></td>
+                                        <td><m3>{product.pro_size}</m3></td>
                                         
-                                        <td>
+                                        <td><m3>
                                           <EditPro
-                                            pro_id={product.pro_id}                    
+                                             pro_id={product.pro_id}                    
                                             pro_name={product.pro_name}
                                             pro_cost={product.pro_cost}
                                             pro_price={product.pro_price}
                                             pro_num={product.pro_num}
                                             pro_size={product.pro_size}
                                             pro_img={product.pro_img}
-                                          />
+                                          /></m3>
                                         </td>
                                       </tr>
                                   );

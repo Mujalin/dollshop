@@ -21,7 +21,7 @@ export default function Inproduct() {
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(bodyStr)
             })
-            window.location = `/mesproduct`;
+            window.location = `/Mesproduct`;
         } catch (err){
             console.error(err.message);
         }
@@ -32,38 +32,44 @@ export default function Inproduct() {
     <div class="in1">
         <form onSubmit={doInsertForm}>
             <br/>
-        <h1 class="text-center">เพิ่มข้อมูลสินค้า</h1>
-        <table class='table  table-striped'>
+        <m1>เพิ่มข้อมูลสินค้า</m1>
+        <br/>
+        <table class='table'>
             <tr>
-                <td class="td1 ">รหัสสินค้า : </td>
-                <td class="td2"><input type="text" name="pro_id" size="30" onChange={e=>{setpro_id(e.target.value);}} required></input></td>
+                <td><m2>รหัสสินค้า : </m2></td>
+                <td className= "td2">
+                    <input type="text" name="pro_id"
+                     required onChange={e=>{setpro_id(e.target.value);}} >
+                </input></td>
             </tr>
             <tr>
-                <td class="td1">ชื่อสินค้า : </td>
-                <td class="td2"><input type="text" name="pro_name" size="30" onChange={e=>{setpro_name(e.target.value);}} required></input></td>
+                <td><m2>ชื่อสินค้า :</m2></td>
+                <td class="d">
+                    <input type="text" name="pro_name"  onChange={e=>{setpro_name(e.target.value);}} required></input></td>
             </tr>
             <tr>
-                <td class="td1">ต้นทุน : </td>
-                <td class="td2"><input type="text" name="pro_cost" size="30" onChange={e=>{setpro_cost(e.target.value);}} required></input></td>
+                <td><m2>ต้นทุน : </m2></td>
+                <td class="d"><input type="text" name="pro_cost"  onChange={e=>{setpro_cost(e.target.value);}} required></input></td>
             </tr>
             <tr>
-                <td class="td1">ราคา : </td>
-                <td class="td2"><input type="text" name="pro_price" size="30" onChange={e=>{setpro_price(e.target.value);}} required></input></td>
+                <td ><m2>ราคา : </m2></td>
+                <td class="d"><input type="text" name="pro_price"  onChange={e=>{setpro_price(e.target.value);}} required></input></td>
             </tr>
             <tr>
-                <td class="td1">จำนวนคงเหลือ : </td>
-                <td class="td2"><input type="text" name="pro_num" size="30" onChange={e=>{setpro_num(e.target.value);}} required></input></td>
+                <td><m2>จำนวนคงเหลือ : </m2></td>
+                <td class="d"><input type="text" name="pro_num"  onChange={e=>{setpro_num(e.target.value);}} required></input></td>
             </tr>
             <tr>
-                <td class="td1">ขนาด : </td>
-                <td class="td2"><input type="text" name="pro_size" size="30" onChange={e=>{setpro_size(e.target.value);}} required></input></td>
+                <td ><m2>ขนาด : </m2></td>
+                <td class="d"><input type="text" name="pro_size"  onChange={e=>{setpro_size(e.target.value);}} required></input></td>
             </tr>
-
-            <td class="td1">รูป : </td>
-            <td class="td2"><input type="text" name="fileupload" size="30" onChange={e=>{setfileupload(e.target.value);}} required></input></td>
+            <tr>
+            <td><m2>รูป : </m2></td>
+            <td class="d"><input type="text" name="fileupload"onChange={e=>{setfileupload(e.target.value);}} required></input></td>
+            </tr>
             </table>
-            <button class="b-in" type="submit">บันทึก</button>
-            <button type="reset" class="b-in2">ล้าง</button>
+            <button class="b-in" type="submit" onClick={(e) => {doInsertForm(e)}} ><m4>บันทึก</m4> </button>
+            <button type="reset" class="b-in2"><m4>ล้าง</m4></button>
             </form>
         </div>
     )

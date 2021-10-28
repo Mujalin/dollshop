@@ -1,12 +1,70 @@
-.in1 {
-  width: 1000px;
-  margin-top: 18%;
-  margin-left: 50%;
-  transform: translate(-50%, -50%);
+
+.in1{
+  width: 80%;
+  padding-left: 25%;
+  }
+
+.b-in {
+  background-color: rgb(124, 124, 230);
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  text-align: center;;
+    margin-top: 20px;
+    margin-left: 150px;
+    margin-bottom: 20px;
+}
+m4{
+  color: black;
+}
+.b-in2 {
+  background-color: rgb(218, 105, 171);
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  text-align: center;;
+  margin-top: 20px;
+  margin-left: 90px;
+  margin-bottom: 20px;
+}
+m2{
+  color: aliceblue;
+  width: 200px;
+}
+.d {
+  color: aliceblue;
+  width: 500px;
+}
+td,tr,th{
+  border: 1px solid rgb(255, 255, 255);
+  border-collapse: collapse;
+}
+.tablein{
+ 
+    border: 1px solid rgb(247, 244, 244);
+    border-collapse: collapse;
+}
+m1{
+  font-size: 50px;
+  padding-left: 250px;
 }
 
+/* .in-title {
+  text-align: center;
+ 
+} */
+/* .table{
+    width:100%;
+  }
+  table, th, td{
+    border: 1px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+} 
 .td1 {
-  text-align: right;
   width: 200px;
 }
 
@@ -17,37 +75,4 @@
 td {
   text-align: center;
 
-}
-
-.b-in {
- 
-  text-align: center;;
-    margin-top: 20px;
-    margin-left: 350px;
-    margin-bottom: 20px;
-}
-
-.b-in2 {
-
-  text-align: center;;
-  margin-top: 20px;
-  margin-left: 90px;
-  margin-bottom: 20px;
-}
-
-
-
-.in-title {
-  text-align: center;
-}
-.table{
-    width:100%;
-  }
-  table, th, td{
-    border: 1px solid rgb(0, 0, 0);
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    text-align: center;
-}
+}*/

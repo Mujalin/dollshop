@@ -11,7 +11,7 @@ import Cart from "./components/Cart";
 import Mesproduct from "./components/Mesproduct";
 import Login from "./components/Login";
 import './q.css';
-import Inproduct from "./components/Inproduct";
+import InProduct from "./components/InProduct";
 import Location from "./components/Location";
 import NavbarAdmin from "./components/NavbarAdmin";
 import Product from "./components/Product";
@@ -67,7 +67,7 @@ export default function App() {
             </Route>
             <Route  exact path = "/Inproduct">
             <NavbarAdmin/>
-            <Inproduct/>
+            <InProduct/>
             </Route>
         </Switch>
       </Router>
