@@ -1,10 +1,8 @@
-.insert{
-    background-image: url("https://wuttichaiteacher.online/wp-content/uploads/2020/06/09.jpg");
-}
+
 .neons {
     
     text-align: center;
-    color: black;
+    color: rgb(247, 247, 247);
     
   }
 
@@ -68,4 +66,6 @@ span {
   span a:hover {
     transform: translateZ(-25px) rotateX(-90deg);
   }
- 
+m3{
+   color: aliceblue;
+  }
