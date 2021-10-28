@@ -7,13 +7,13 @@ import { useLocation } from "react-router";
     const [amount,setamount] = useState(1)
     let location = useLocation();
     let pro_id = location.pathname.split("/")[2];
-
-
+    let [sale_id,setsale_id]=useState([])
+        let saleid;
     const insertCart =(e)=>{
         e.preventDefault();
     try {
         
-      const bodyData = { pro_id,amount};
+      const bodyData = { pro_id,amount,saleid};
       const resp = fetch("http://localhost:4000/insertCart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -26,6 +26,19 @@ import { useLocation } from "react-router";
     }
     }
     
+    const loadsale_id = async () => {
+        try {
+
+            const resp = await fetch(`http://localhost:4000/getsale`)
+            const jsondata = await resp.json()
+            setsale_id(jsondata)
+            console.log(productList)
+
+
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
 
     const loadList = async () => {
         try {
@@ -42,14 +55,23 @@ import { useLocation } from "react-router";
     }
     useEffect(() => {
         loadList();
+        loadsale_id();
 
     }, [])
     return (
     <div className="bg-produce">
-        
+
+        {sale_id.map((sale)=>{
+            saleid=sale.sale_id
+            if(saleid==undefined){
+                saleid=Math.floor(Math.random() * 100000);
+              }
+return <h1>saleid = {saleid}</h1>
+        })}
+
         {productList.map((products) => {
                
-
+            
                 return (
 
                 <form name="myForm" onSubmit={insertCart} >

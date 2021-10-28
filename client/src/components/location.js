@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 
 export default function location() {
+    
     const [cargo_re_name,setcargo_re_name]=useState([])
     const [loc_desc1,setloc_desc1]=useState([])
     const [loc_desc2,setloc_desc2]=useState([])
@@ -8,27 +9,66 @@ export default function location() {
     const [loc_desc4,setloc_desc4]=useState([])
     const [loc_desc5,setloc_desc5]=useState([])
     const [cargo_re_phone,setcargo_re_phone]=useState([])
-    
+    let [sale_id,setsale_id]=useState([])
+    let [amount,setamount]=useState([])
+    let saleid;
+    let sale_amount;
     const insertloc =(e)=>{
         e.preventDefault();
     try {
         
-      const bodyData = { cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone};
+      const bodyData = { cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone,saleid,sale_amount};
       const resp = fetch("http://localhost:4000/insertloc", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bodyData),
       });
       
-      window.location = `/`;
+      window.location = `/..`;
     } catch (err) {
       console.error(err.message);
     }
     }
+    const loadsale_id = async () => {
+      try {
+
+          const resp = await fetch(`http://localhost:4000/getsale`)
+          const jsondata = await resp.json()
+          setsale_id(jsondata)
+          
+
+
+      } catch (error) {
+          console.error(error.message)
+      }
+  }
+  const loadamount = async () => {
+    try {
+
+        const resp = await fetch(`http://localhost:4000/getamount`)
+        const jsondata = await resp.json()
+        setamount(jsondata)
+        
+
+
+    } catch (error) {
+        console.error(error.message)
+    }
+}
+  useEffect(() => {
+    loadamount();
+    loadsale_id();
+
+}, [])
 
     return (
       
         <div>
+          {sale_id.map((sale)=>{
+            saleid=sale.sale_id
+            sale_amount=sale.sale_amount
+return <h1>saleid = {saleid}</h1>
+        })}
             <form onSubmit={insertloc} >
       <div className="boot"><br/>
         <label>ชื่อผู้รับสินค้า </label>

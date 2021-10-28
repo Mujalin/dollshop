@@ -39,7 +39,7 @@ export default function Product() {
             />
             {productList.map((products) => {
 
-                let locat = "./produce/"+products.pro_id
+                let locat = "/produce/"+products.pro_id
                 return (
 
 

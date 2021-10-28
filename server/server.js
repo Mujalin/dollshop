@@ -49,12 +49,12 @@ app.get("/getProduct/:name", async(req, res) => {
     }
   });
 
-
-  app.get("/getCustomer", async(req, res) => {
+  app.get("/getsale", async(req, res) => {
     try {
-      // let {id} = req.params;
-  
-      const sql = "SELECT * from customer ";
+      // let name = req.params.name;
+      // let id = req.params.pro_id;
+      
+      const sql = `SELECT sale.sale_id,sum(sale_amount) sale_amount from sale,sale_detail where sale.sale_id=sale_detail.sale_id and sale_status="cart" LIMIT 1;  `;
       
       pool.query(sql, (err, results) => {
   
@@ -66,11 +66,29 @@ app.get("/getProduct/:name", async(req, res) => {
     }
   });
 
+  app.get("/getamount", async(req, res) => {
+    try {
+      // let name = req.params.name;
+      // let id = req.params.pro_id;
+      
+      const sql = `SELECT sum(sale_amount) from sale_detail where sale_id=${saleid}  `;
+      
+      pool.query(sql, (err, results) => {
+  
+        console.log(results);
+        res.send(results);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
+
+
   app.get("/getcart", async(req, res) => {
     try {
       // let {id} = req.params;
-  
-      const sql = `SELECT * FROM cart,product WHERE product.pro_id=cart.pro_id and sale_id='sale01' ; `;
+      // let saleid=req.params.id;
+      const sql = `SELECT * FROM sale,sale_detail,product WHERE product.pro_id=sale_detail.pro_id and sale.sale_id = sale_detail.sale_id and sale_status='cart'  ; `;
       
       pool.query(sql, (err, results) => {
   
@@ -103,9 +121,9 @@ app.get("/getProduct/:name", async(req, res) => {
 app.post("/insertCart", async(req, res) => {
   try {
     
-    const {pro_id,amount}=req.body
+    const {pro_id,amount,saleid}=req.body
 
-    const sql = `INSERT INTO cart (sale_id,pro_id,amount) values('sale01','${pro_id}',${amount}); INSERT INTO sale_detail (sale_id,pro_id,sale_amount) values('sale01','${pro_id}',${amount}); `;
+    const sql = ` INSERT INTO sale_detail (sale_id,pro_id,sale_amount) values(${saleid},'${pro_id}',${amount}); INSERT INTO sale (sale_id,sale_status) values(${saleid},'cart'); `;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
@@ -120,14 +138,12 @@ app.post("/insertCart", async(req, res) => {
 });
 
 
-
-//post and delete
 app.post("/insertloc", async(req, res) => {
   try {
     
-    const {cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone}=req.body
+    const {cargo_re_name,loc_desc1,loc_desc2,loc_desc3,loc_desc4,loc_desc5,cargo_re_phone, saleid,sale_amount}=req.body
     const loc_desc=loc_desc1+' '+loc_desc2+' '+loc_desc3+' '+loc_desc4+' '+loc_desc5
-    const sql = ` insert into location values('cus10','${loc_desc}','loc10'); insert into cargo values ('cargo0','sale0','0','2020-20-20','loc10','${cargo_re_name}','${cargo_re_phone}','กำลัง');`;
+    const sql = ` UPDATE sale SET sale_status='complete' WHERE sale_id=${saleid} ;insert into cargo (cargo_id, sale_id, cargo_num,  loc_desc,cargo_re_name, cargo_re_phone, cargo_status) values ('cargo0',${saleid},${sale_amount},'${loc_desc}','${cargo_re_name}','${cargo_re_phone}','กำลัง');`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
@@ -189,9 +205,9 @@ app.put("/updateProduct/:id", (req, res) => {
 app.delete("/deleteCart", async(req, res) => {
   try {
     
-    const {pro_id}=req.body
-
-    const sql = `delete from cart where sale_id='sale01' and pro_id='${pro_id}';delete from sale_detail where sale_id='sale01' and pro_id='${pro_id}'`;
+    const {pro_id,saleid}=req.body
+    
+    const sql = `delete from sale_detail where sale_id=${saleid} and pro_id='${pro_id}'`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)

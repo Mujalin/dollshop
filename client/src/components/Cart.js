@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react'
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 
 
 export default function cart() {
@@ -8,13 +8,16 @@ export default function cart() {
     // let location = useLocation();
     // let pro_id = location.pathname.split("/")[2];
     const [pro_id,setpro_id]=useState([])
+    let [sale_id,setsale_id]=useState([])
+    let saleid;
     let total=0
+    
 
     const deleteCart =(e)=>{
         e.preventDefault();
     try {
         
-      const bodyData = { pro_id};
+      const bodyData = {pro_id,saleid};
       const resp = fetch("http://localhost:4000/deleteCart", {
         method: "delete",
         headers: { "Content-Type": "application/json" },
@@ -26,7 +29,7 @@ export default function cart() {
       console.error(err.message);
     }
     }
-    
+
     const loadList = async () => {
         try {
 
@@ -40,19 +43,24 @@ export default function cart() {
         } catch (error) {
             console.error(error.message)
         }
+        
     }
     useEffect(() => {
         loadList();
+        
 
     }, [])
     return (
         <div>
  <a href="/location"><button className="glow-hover" type="submit" >ดำเนินการสั่งซื้อ</button></a>
             {productList.map((products) => {
-                total += products.pro_price*products.amount
-                
+                total += products.pro_price*products.sale_amount
+                saleid=products.sale_id
+
                 return (
+                    
                     <div>
+                        
                     <form onSubmit={deleteCart}>
                     <div class="at">
                         <div className="card">
@@ -61,7 +69,7 @@ export default function cart() {
                             
                             <div className="card-body">
                                 <h5 className="card-title">{products.pro_name}</h5>
-                                <p>จำนวน {products.amount}</p>
+                                <p>จำนวน {products.sale_amount}</p>
                                 <p className="card-text"> ราคา {products.pro_price} ขนาด {products.pro_size}</p>
                                 
                             </div>
