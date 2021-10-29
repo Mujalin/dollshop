@@ -10,14 +10,14 @@ export default function cart() {
     const [pro_id,setpro_id]=useState([])
     let [sale_id,setsale_id]=useState([])
     let saleid;
-    let total=0
-    
-
+    let total=0;
+    let pro_num;
+    let amount;
     const deleteCart =(e)=>{
         e.preventDefault();
     try {
         
-      const bodyData = {pro_id,saleid};
+      const bodyData = {pro_id,saleid,pro_num,amount};
       const resp = fetch("http://localhost:4000/deleteCart", {
         method: "delete",
         headers: { "Content-Type": "application/json" },
@@ -71,8 +71,8 @@ export default function cart() {
             {productList.map((products) => {
                 total += products.pro_price*products.sale_amount
                 saleid=products.sale_id
-                
-               
+                pro_num=products.pro_num
+                amount=products.sale_amount
                 return (
                     
                      
@@ -96,7 +96,7 @@ export default function cart() {
             <td class="text-center"><a href="/location"><button class="btn btn-success" type="submit" >ดำเนินการสั่งซื้อ</button></a></td>
            </tr>
 </tbody>
-</table></form><br/><br/><br/><br/><br/><br/><br/><br/>
+</table></form><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </div>
 
        

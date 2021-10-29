@@ -8,12 +8,14 @@ import { useLocation } from "react-router";
     let location = useLocation();
     let pro_id = location.pathname.split("/")[2];
     let [sale_id,setsale_id]=useState([])
+    let [pro_num,setpro_num]=useState([])
         let saleid;
+        
     const insertCart =(e)=>{
         e.preventDefault();
     try {
         
-      const bodyData = { pro_id,amount,saleid};
+      const bodyData = { pro_id,amount,saleid,pro_num};
       const resp = fetch("http://localhost:4000/insertCart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -32,7 +34,21 @@ import { useLocation } from "react-router";
             const resp = await fetch(`http://localhost:4000/getsale`)
             const jsondata = await resp.json()
             setsale_id(jsondata)
-            console.log(productList)
+            
+
+
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+
+    const loadpro_num = async () => {
+        try {
+
+            const resp = await fetch(`http://localhost:4000/getpro_num`)
+            const jsondata = await resp.json()
+            setpro_num(jsondata)
+            
 
 
         } catch (error) {
@@ -56,18 +72,24 @@ import { useLocation } from "react-router";
     useEffect(() => {
         loadList();
         loadsale_id();
-
+        loadpro_num();
     }, [])
     return (
     <div className="bg-produce">
-
+{pro_num.map((num)=>{
+    let pro=num.pro_num
+    
+})}
         {sale_id.map((sale)=>{
             saleid=sale.sale_id
+            pro_num=sale.pro_num
             if(saleid==undefined){
                 saleid=Math.floor(Math.random() * 100000);
               }
-
-        })}
+             
+        }
+        )
+        }
 
         {productList.map((products) => {
                

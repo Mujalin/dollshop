@@ -54,7 +54,24 @@ app.get("/getProduct/:name", async(req, res) => {
       // let name = req.params.name;
       // let id = req.params.pro_id;
       
-      const sql = `SELECT sale.sale_id,sum(sale_amount) sale_amount from sale,sale_detail,product where sale_detail.pro_id = product.pro_id and sale.sale_id=sale_detail.sale_id and sale_status="cart" LIMIT 1;  `;
+      const sql = `SELECT pro_num,sale.sale_id,sum(sale_amount) sale_amount from sale,sale_detail,product where sale_detail.pro_id = product.pro_id and sale.sale_id=sale_detail.sale_id and sale_status="cart" LIMIT 1;  `;
+      
+      pool.query(sql, (err, results) => {
+  
+        console.log(results);
+        res.send(results);
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  });
+ 
+  app.get("/getpro_num", async(req, res) => {
+    try {
+      // let name = req.params.name;
+      // let id = req.params.pro_id;
+      
+      const sql = `SELECT * from product ;  `;
       
       pool.query(sql, (err, results) => {
   
@@ -71,7 +88,7 @@ app.get("/getProduct/:name", async(req, res) => {
       // let name = req.params.name;
       // let id = req.params.pro_id;
       
-      const sql = `SELECT sum(sale_amount) from sale_detail where sale_id=${saleid}  `;
+      const sql = `SELECT sum(sale_amount) from sale_detail where sale_id='${saleid}'  `;
       
       pool.query(sql, (err, results) => {
   
@@ -100,18 +117,28 @@ app.get("/getProduct/:name", async(req, res) => {
     }
   });
 
-  app.get("/getlogin", async(req, res) => {
+  app.post("/getlogin", async(req, res) => {
     try {
-      const {cus_user,cus_pass}=req.body
-      
+      const cus_user=req.body.cus_user
+      const cus_pass=req.body.cus_pass
       const sql = `SELECT * FROM customer WHERE cus_user='${cus_user}' and cus_pass='${cus_pass}' `;
       
-      pool.query(sql, (err, results) => {
+      pool.query(sql,
+  (err,result)=>{
+    
+      if(err){
+          console.log(err); 
+          res.send({err:err});
+      }
+      if(result.length>0){
         
-        console.log(results);
-        res.send(results);
-   
-      });
+          res.send(result);
+          
+      }else{
+          res.send({message:"Wrong email/password.."});
+      }
+      
+  });
     } catch (err) {
       console.error(err.message);
     }
@@ -139,8 +166,8 @@ app.post("/insertCart", async(req, res) => {
   try {
     
     const {pro_id,amount,saleid}=req.body
-
-    const sql = ` INSERT INTO sale_detail (sale_id,pro_id,sale_amount) values(${saleid},'${pro_id}',${amount}); INSERT INTO sale (sale_id,sale_status) values(${saleid},'cart'); `;
+    
+    const sql = `update product set pro_num=pro_num-${amount} where pro_id='${pro_id}';  INSERT INTO sale_detail (sale_id,pro_id,sale_amount) values(${saleid},'${pro_id}',${amount}); INSERT INTO sale (sale_id,sale_status) values(${saleid},'cart'); `;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
@@ -223,9 +250,9 @@ app.put("/updateProduct/:id", (req, res) => {
 app.delete("/deleteCart", async(req, res) => {
   try {
     
-    const {pro_id,saleid}=req.body
-    
-    const sql = `delete from sale_detail where sale_id=${saleid} and pro_id='${pro_id}'`;
+    const {pro_id,saleid,pro_num,amount}=req.body
+    let pro=pro_num+amount
+    const sql = `update product set pro_num=${pro} where pro_id='${pro_id}'; delete from sale_detail where sale_id=${saleid} and pro_id='${pro_id}'`;
     
     pool.query(sql, (err, results) => {
       console.log(sql)
